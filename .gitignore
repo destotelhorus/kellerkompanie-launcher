@@ -70,3 +70,9 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+profiles/
+
+resources/
+
+a3s.xml
