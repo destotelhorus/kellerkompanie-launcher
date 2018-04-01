@@ -1,0 +1,1 @@
+Basically a clone of ArmA3Sync, with an added console command to build all repositories at once
