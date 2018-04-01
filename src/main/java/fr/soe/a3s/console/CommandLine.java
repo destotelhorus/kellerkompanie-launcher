@@ -1,8 +1,10 @@
 package fr.soe.a3s.console;
 
 import java.io.File;
+import java.util.List;
 
 import fr.soe.a3s.controller.ObserverEnd;
+import fr.soe.a3s.dto.RepositoryDTO;
 import fr.soe.a3s.exception.LoadingException;
 import fr.soe.a3s.service.RepositoryService;
 
@@ -30,6 +32,31 @@ public class CommandLine extends CommandGeneral {
 
 		super.build(repositoryName, observerEndBuild);
 	}
+
+    public void buildAll() {
+
+        RepositoryService repositoryService = new RepositoryService();
+
+        /* Load Repositories */
+
+        try {
+            repositoryService.readAll();
+        } catch (LoadingException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        }
+
+        /* Proceed with command */
+
+        ObserverEnd observerEndBuild = () -> {};
+
+        List<RepositoryDTO> repositories = repositoryService.getRepositories();
+        for(RepositoryDTO repo : repositories) {
+            super.build(repo.getName(), observerEndBuild);
+        }
+
+        System.exit(0);
+    }
 
 	public void check(String repositoryName) {
 

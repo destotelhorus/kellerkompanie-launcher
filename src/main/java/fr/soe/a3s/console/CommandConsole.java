@@ -340,6 +340,8 @@ public class CommandConsole extends CommandGeneral {
         }
 
         build(name);
+
+        execute();
     }
 
     private void build(String name) {
@@ -379,7 +381,7 @@ public class CommandConsole extends CommandGeneral {
 		// enable partial file transfer
         repositoryService.setUsePartialFileTransfer(name,true);
 
-		ObserverEnd observerEndBuild = this::execute;
+		ObserverEnd observerEndBuild = () -> {};
 
 		super.build(name, observerEndBuild);
 	}

@@ -117,7 +117,10 @@ public class ArmA3Sync implements DataAccessConstants {
 			CommandLine commandLine = new CommandLine();
 			String repositoryName = args[1];
 			commandLine.build(repositoryName);
-		} else if (args.length == 2 && args[0].equalsIgnoreCase("-check")) {
+		} else if (args.length == 1 && args[0].equalsIgnoreCase("-buildall")) {
+            CommandLine commandLine = new CommandLine();
+            commandLine.buildAll();
+        } else if (args.length == 2 && args[0].equalsIgnoreCase("-check")) {
 			CommandLine commandLine = new CommandLine();
 			String repositoryName = args[1];
 			commandLine.check(repositoryName);
@@ -138,6 +141,7 @@ public class ArmA3Sync implements DataAccessConstants {
 			System.out.println("ArmA3Sync - bad command.");
 			System.out.println("-BUILD " + "\"" + "Name of the Repository"
 					+ "\"" + " : build repository.");
+			System.out.println("-BUILDALL : build all repositories.");
 			System.out.println("-CHECK " + "\"" + "Name of the Repository"
 					+ "\"" + " : check repository.");
 			System.out.println("-CONSOLE: run ArmASync console management.");
