@@ -251,7 +251,7 @@ public class ObjectDTOtransformer {
 		protocoleDTO.setConnectionTimeOut(repository.getProtocol()
 				.getConnectionTimeOut());
 		protocoleDTO.setReadTimeOut(repository.getProtocol().getReadTimeOut());
-		repositoryDTO.setProtocoleDTO(protocoleDTO);
+		repositoryDTO.setProtocolDTO(protocoleDTO);
 		// Repository upload protocole
 		ProtocolDTO repositoryUploadProtocoleDTO = new ProtocolDTO();
 		if (repository.getUploadProtocole() != null) {

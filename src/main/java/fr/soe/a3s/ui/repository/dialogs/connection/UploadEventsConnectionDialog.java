@@ -68,7 +68,7 @@ public class UploadEventsConnectionDialog extends AbstractDialog {
 		try {
 			RepositoryDTO repositoryDTO = repositoryService
 					.getRepository(repositoryName);
-			ProtocolDTO protocolDTO = repositoryDTO.getProtocoleDTO();
+			ProtocolDTO protocolDTO = repositoryDTO.getProtocolDTO();
 			ProtocolDTO uploadProtocolDTO = repositoryDTO
 					.getUploadProtocoleDTO();
 			if (uploadProtocolDTO != null) {

@@ -388,7 +388,7 @@ public class BuildRepositoryOptionsDialog extends AbstractDialog implements
 		// Partial files transfer
 		try {
 			ProtocolType protocolType = repositoryService
-					.getRepository(repositoryName).getProtocoleDTO()
+					.getRepository(repositoryName).getProtocolDTO()
 					.getProtocolType();
 			if (protocolType != null) {
 				if (protocolType.equals(ProtocolType.HTTP)

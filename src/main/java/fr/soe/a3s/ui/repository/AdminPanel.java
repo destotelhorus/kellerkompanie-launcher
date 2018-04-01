@@ -401,7 +401,7 @@ public class AdminPanel extends JPanel implements UIConstants {
 			textFieldMainSharedFolderLocation.setText(repositoryDTO.getPath());
 
 			if (repositoryDTO.getAutoConfigURL() != null) {
-				textFieldAutoConfigURL.setText(repositoryDTO.getProtocoleDTO()
+				textFieldAutoConfigURL.setText(repositoryDTO.getProtocolDTO()
 						.getProtocolType().getPrompt()
 						+ repositoryDTO.getAutoConfigURL());
 			}
@@ -486,7 +486,7 @@ public class AdminPanel extends JPanel implements UIConstants {
 
 		/* Check consistency between repository url and main folder path */
 		String mainFolderName = file.getName();
-		String url = repositoryDTO.getProtocoleDTO().getUrl();
+		String url = repositoryDTO.getProtocolDTO().getUrl();
 		if (url.endsWith("/")) {// there is / at the end of url
 			int lastIndex = url.lastIndexOf("/");
 			if (lastIndex != -1) {

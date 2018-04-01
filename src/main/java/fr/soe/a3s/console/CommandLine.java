@@ -6,6 +6,9 @@ import fr.soe.a3s.controller.ObserverEnd;
 import fr.soe.a3s.exception.LoadingException;
 import fr.soe.a3s.service.RepositoryService;
 
+/**
+ * edited by Schwaggot
+ */
 public class CommandLine extends CommandGeneral {
 
 	public void build(String repositoryName) {
@@ -23,12 +26,7 @@ public class CommandLine extends CommandGeneral {
 
 		/* Proceed with command */
 
-		ObserverEnd observerEndBuild = new ObserverEnd() {
-			@Override
-			public void end() {
-				System.exit(0);
-			}
-		};
+		ObserverEnd observerEndBuild = () -> System.exit(0);
 
 		super.build(repositoryName, observerEndBuild);
 	}
@@ -48,12 +46,7 @@ public class CommandLine extends CommandGeneral {
 
 		/* Proceed with command */
 
-		ObserverEnd observerEndCheck = new ObserverEnd() {
-			@Override
-			public void end() {
-				System.exit(0);
-			}
-		};
+		ObserverEnd observerEndCheck = () -> System.exit(0);
 
 		super.check(repositoryName, observerEndCheck);
 	}
@@ -99,12 +92,7 @@ public class CommandLine extends CommandGeneral {
 		repositoryService.setConnectionTimeout(repositoryName, "0");
 		repositoryService.setReadTimeout(repositoryName, "0");
 
-		ObserverEnd observerEnd = new ObserverEnd() {
-			@Override
-			public void end() {
-				System.exit(0);
-			}
-		};
+		ObserverEnd observerEnd = () -> System.exit(0);
 
 		super.sync(repositoryName, observerEnd);
 	}

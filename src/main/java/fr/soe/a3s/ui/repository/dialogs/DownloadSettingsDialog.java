@@ -219,7 +219,7 @@ public class DownloadSettingsDialog extends AbstractDialog {
 			/* Set Connection and Read timeout */
 			RepositoryDTO repositoryDTO = repositoryService
 					.getRepository(repositoryName);
-			ProtocolDTO protocolDTO = repositoryDTO.getProtocoleDTO();
+			ProtocolDTO protocolDTO = repositoryDTO.getProtocolDTO();
 			int connectionTimeout = Integer.parseInt(protocolDTO
 					.getConnectionTimeOut());// ms
 			textFieldConnectionTimeout.setText(Integer

@@ -32,7 +32,7 @@ public class ProgressUploadEventsDialog extends AbstractProgressDialog {
 			// 1. Check repository upload protocole
 			RepositoryDTO repositoryDTO = repositoryService
 					.getRepository(repositoryName);
-			ProtocolDTO protocoleDTO = repositoryDTO.getProtocoleDTO();
+			ProtocolDTO protocoleDTO = repositoryDTO.getProtocolDTO();
 			ProtocolType protocolType = protocoleDTO.getProtocolType();
 			ProtocolDTO uploadProtocoleDTO = repositoryDTO
 					.getUploadProtocoleDTO();

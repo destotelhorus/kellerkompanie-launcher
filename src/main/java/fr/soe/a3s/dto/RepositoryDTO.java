@@ -1,15 +1,18 @@
 package fr.soe.a3s.dto;
 
-public class RepositoryDTO implements java.lang.Comparable {
+/**
+ * edited by Schwaggot
+ */
+public class RepositoryDTO implements Comparable {
 
 	private String name;
 	private boolean notify;
-	private ProtocolDTO protocoleDTO;
+	private ProtocolDTO protocolDTO;
 	private int revision;
 	private String path;
 	private String autoConfigURL;
-	private ProtocolDTO repositoryUploadProtocoleDTO;
-	private ProtocolDTO repositoryProxyProtocoleDTO;
+	private ProtocolDTO repositoryUploadProtocolDTO;
+	private ProtocolDTO repositoryProxyProtocolDTO;
 	private boolean enableProxy;
 	private boolean auto;
 
@@ -29,12 +32,12 @@ public class RepositoryDTO implements java.lang.Comparable {
 		this.notify = notify;
 	}
 
-	public ProtocolDTO getProtocoleDTO() {
-		return protocoleDTO;
+	public ProtocolDTO getProtocolDTO() {
+		return protocolDTO;
 	}
 
-	public void setProtocoleDTO(ProtocolDTO protocoleDTO) {
-		this.protocoleDTO = protocoleDTO;
+	public void setProtocolDTO(ProtocolDTO protocolDTO) {
+		this.protocolDTO = protocolDTO;
 	}
 
 	public int getRevision() {
@@ -62,19 +65,19 @@ public class RepositoryDTO implements java.lang.Comparable {
 	}
 
 	public ProtocolDTO getUploadProtocoleDTO() {
-		return repositoryUploadProtocoleDTO;
+		return repositoryUploadProtocolDTO;
 	}
 
 	public void setUploadProtocoleDTO(ProtocolDTO repositoryUploadProtocoleDTO) {
-		this.repositoryUploadProtocoleDTO = repositoryUploadProtocoleDTO;
+		this.repositoryUploadProtocolDTO = repositoryUploadProtocoleDTO;
 	}
 
 	public ProtocolDTO getProxyProtocoleDTO() {
-		return repositoryProxyProtocoleDTO;
+		return repositoryProxyProtocolDTO;
 	}
 
 	public void setProxyProtocoleDTO(ProtocolDTO repositoryProxyProtocoleDTO) {
-		this.repositoryProxyProtocoleDTO = repositoryProxyProtocoleDTO;
+		this.repositoryProxyProtocolDTO = repositoryProxyProtocoleDTO;
 	}
 
 	public boolean isEnableProxy() {

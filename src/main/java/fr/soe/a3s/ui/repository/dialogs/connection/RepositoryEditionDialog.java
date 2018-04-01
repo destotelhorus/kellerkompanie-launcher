@@ -101,7 +101,7 @@ public class RepositoryEditionDialog extends AbstractDialog
 			/* Init Repository and Connection Section */
 			RepositoryDTO repositoryDTO = repositoryService
 					.getRepository(repositoryName);
-			ProtocolDTO protocoleDTO = repositoryDTO.getProtocoleDTO();
+			ProtocolDTO protocoleDTO = repositoryDTO.getProtocolDTO();
 			ProtocolType protocole = protocoleDTO.getProtocolType();
 			comboBoxProtocolModel.setSelectedItem(protocole.getDescription());
 			connectionPanel.init(protocoleDTO);

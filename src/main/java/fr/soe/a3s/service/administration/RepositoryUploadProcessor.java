@@ -57,7 +57,7 @@ public class RepositoryUploadProcessor {
 			// 1. Check repository upload protocol
 			RepositoryDTO repositoryDTO = repositoryService
 					.getRepository(repositoryName);
-			ProtocolDTO protocoleDTO = repositoryDTO.getProtocoleDTO();
+			ProtocolDTO protocoleDTO = repositoryDTO.getProtocolDTO();
 			ProtocolType protocolType = protocoleDTO.getProtocolType();
 			ProtocolDTO uploadProtocoleDTO = repositoryDTO
 					.getUploadProtocoleDTO();
