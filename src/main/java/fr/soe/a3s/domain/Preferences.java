@@ -2,11 +2,7 @@ package fr.soe.a3s.domain;
 
 import java.io.Serializable;
 
-import fr.soe.a3s.constant.CheckRepositoriesFrequency;
-import fr.soe.a3s.constant.IconResize;
-import fr.soe.a3s.constant.LookAndFeel;
-import fr.soe.a3s.constant.MinimizationType;
-import fr.soe.a3s.constant.StartWithOS;
+import fr.soe.a3s.constant.*;
 
 public class Preferences implements Serializable {
 
@@ -21,6 +17,7 @@ public class Preferences implements Serializable {
 	private IconResize iconResizeSize = IconResize.AUTO;
 	private StartWithOS startWithOS = StartWithOS.DISABLED;
 	private CheckRepositoriesFrequency checkRepositoriesFrequency = CheckRepositoriesFrequency.FREQ3;
+	private YesNo warnExactMatchDelete = YesNo.YES;
 
 	public MinimizationType getLaunchPanelGameLaunch() {
 		return launchPanelGameLaunch;
@@ -81,5 +78,17 @@ public class Preferences implements Serializable {
 	public void setCheckRepositoriesFrequency(
 			CheckRepositoriesFrequency checkRepositoriesFrequency) {
 		this.checkRepositoriesFrequency = checkRepositoriesFrequency;
+	}
+
+	public YesNo getWarnExactMatchDelete() {
+		if (warnExactMatchDelete == null) {
+			warnExactMatchDelete = YesNo.YES;
+		}
+		return warnExactMatchDelete;
+	}
+
+	public void setWarnExactMatchDelete(
+			YesNo warnExactMatchDelete) {
+		this.warnExactMatchDelete = warnExactMatchDelete;
 	}
 }

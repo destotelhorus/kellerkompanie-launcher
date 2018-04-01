@@ -15,16 +15,13 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import fr.soe.a3s.constant.CheckRepositoriesFrequency;
-import fr.soe.a3s.constant.IconResize;
-import fr.soe.a3s.constant.LookAndFeel;
-import fr.soe.a3s.constant.MinimizationType;
-import fr.soe.a3s.constant.StartWithOS;
+import fr.soe.a3s.constant.*;
 import fr.soe.a3s.dto.configuration.PreferencesDTO;
 import fr.soe.a3s.exception.WritingException;
 import fr.soe.a3s.service.PreferencesService;
 import fr.soe.a3s.ui.AbstractDialog;
 import fr.soe.a3s.ui.Facade;
+import fr.soe.a3s.ui.UIConstants;
 import fr.soe.a3s.ui.main.tasks.TaskCheckRepositories;
 import fr.soe.a3s.ui.main.tasks.TasksManager;
 
@@ -52,6 +49,8 @@ public class PreferencesDialog extends AbstractDialog {
 	private JComboBox comboBoxStartWithWindows;
 	private JCheckBox checkBoxCheckRepositories;
 	private JComboBox comboBoxCheckRepositories;
+	private JCheckBox checkBoxWarnExactMatchDelete;
+	private JComboBox comboBoxWarnExactMatchDelete;
 	// Service
 	private final PreferencesService preferencesServices = new PreferencesService();
 
@@ -144,6 +143,13 @@ public class PreferencesDialog extends AbstractDialog {
 						.setText("Periodical repositories check:");
 			}
 			{
+				checkBoxWarnExactMatchDelete = new JCheckBox();
+				checkBoxWarnExactMatchDelete.setSelected(true);
+				checkBoxWarnExactMatchDelete.setFocusable(false);
+				checkBoxWarnExactMatchDelete
+						.setText("Warn before deleting with exact match:");
+			}
+			{
 				String[] tab = new String[] {
 						LookAndFeel.LAF_DEFAULT.getName(),
 						LookAndFeel.LAF_ALUMINIUM.getName(),
@@ -196,6 +202,17 @@ public class PreferencesDialog extends AbstractDialog {
 				comboBoxCheckRepositories
 						.setModel(comboBoxCheckRepositoryFrequencyModel);
 				comboBoxCheckRepositories.setFocusable(false);
+			}
+			{
+				String[] tab = new String[]{
+						YesNo.YES.getDescription(),
+						YesNo.NO.getDescription()
+				};
+
+				ComboBoxModel comboBoxWarnExactMatchDeleteModel = new DefaultComboBoxModel(tab);
+				comboBoxWarnExactMatchDelete = new JComboBox();
+				comboBoxWarnExactMatchDelete.setModel(comboBoxWarnExactMatchDeleteModel);
+				comboBoxWarnExactMatchDelete.setFocusable(false);
 			}
 			{
 				GridBagConstraints c = new GridBagConstraints();
@@ -307,6 +324,26 @@ public class PreferencesDialog extends AbstractDialog {
 				c.insets = new Insets(5, 10, 5, 10);
 				panel.add(comboBoxCheckRepositories, c);
 			}
+			{
+				GridBagConstraints c = new GridBagConstraints();
+				c.fill = GridBagConstraints.HORIZONTAL;
+				c.weightx = 0.5;
+				c.weighty = 0;
+				c.gridx = 0;
+				c.gridy = 6;
+				c.insets = new Insets(5, 10, 5, 10);
+				panel.add(checkBoxWarnExactMatchDelete, c);
+			}
+			{
+				GridBagConstraints c = new GridBagConstraints();
+				c.fill = GridBagConstraints.BOTH;
+				c.weightx = 0.5;
+				c.weighty = 0;
+				c.gridx = 1;
+				c.gridy = 6;
+				c.insets = new Insets(5, 10, 5, 10);
+				panel.add(comboBoxWarnExactMatchDelete, c);
+			}
 		}
 
 		this.pack();
@@ -314,12 +351,14 @@ public class PreferencesDialog extends AbstractDialog {
 		if (comboBoxGameLaunch.getBounds().height < 25
 				&& comboBoxLauncherMinimized.getBounds().height < 25
 				&& comboBoxLookAndFeel.getBounds().height < 25
-				&& comboBoxIconResize.getBounds().height < 25) {
+				&& comboBoxIconResize.getBounds().height < 25
+				&& comboBoxWarnExactMatchDelete.getBounds().height < 25) {
 			comboBoxGameLaunch.setPreferredSize(new Dimension(width, 25));
 			comboBoxLauncherMinimized
 					.setPreferredSize(new Dimension(width, 25));
 			comboBoxLookAndFeel.setPreferredSize(new Dimension(width, 25));
 			comboBoxIconResize.setPreferredSize(new Dimension(width, 25));
+			comboBoxWarnExactMatchDelete.setPreferredSize(new Dimension(width, 25));
 		}
 		this.setMinimumSize(new Dimension(width, this.getBounds().height));
 		this.setPreferredSize(new Dimension(width, this.getBounds().height));
@@ -372,6 +411,11 @@ public class PreferencesDialog extends AbstractDialog {
 		if (checkRepositoryFrequency != null) {
 			comboBoxCheckRepositories.setSelectedItem(checkRepositoryFrequency);
 		}
+
+		String warnExactMatchDelete = preferencesDTO.getWarnExactMatchDelete().getDescription();
+		if (warnExactMatchDelete != null) {
+			comboBoxWarnExactMatchDelete.setSelectedItem(warnExactMatchDelete);
+		}
 	}
 
 	@Override
@@ -401,6 +445,10 @@ public class PreferencesDialog extends AbstractDialog {
 				.getEnum(checkRepositoriesFrequency);
 		preferencesDTO
 				.setCheckRepositoriesFrequency(newCheckRepositoriesFrequency);
+
+		String warnExactMatchDelete = (String) comboBoxWarnExactMatchDelete.getSelectedItem();
+		YesNo newWarnExactMatchDelete = YesNo.getEnum(warnExactMatchDelete);
+		preferencesDTO.setWarnExactMatchDelete(newWarnExactMatchDelete);
 
 		/* Update Windows Registry */
 		/*

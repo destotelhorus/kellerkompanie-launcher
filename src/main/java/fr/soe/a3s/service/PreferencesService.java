@@ -49,6 +49,7 @@ public class PreferencesService {
 		preferences.setStartWithOS(preferencesDTO.getStartWithOS());
 		preferences.setCheckRepositoriesFrequency(preferencesDTO
 				.getCheckRepositoriesFrequency());
+		preferences.setWarnExactMatchDelete(preferencesDTO.getWarnExactMatchDelete());
 		return preferences;
 	}
 
@@ -64,6 +65,7 @@ public class PreferencesService {
 		preferencesDTO.setStartWithOS(preferences.getStartWithOS());
 		preferencesDTO.setCheckRepositoriesFrequency(preferences
 				.getCheckRepositoriesFrequency());
+		preferencesDTO.setWarnExactMatchDelete(preferences.getWarnExactMatchDelete());
 		return preferencesDTO;
 	}
 }
